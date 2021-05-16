@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 
 	while(1)
 	{
-		char client[30] = "client ", *str, n[5];
+		char client[30] = "client ", *str, n[5], *str2, n2[10];
 
 		cpy_reads = reads;
 		timeout.tv_sec = 1;
@@ -73,18 +73,10 @@ int main(int argc, char *argv[])
 					for(j = serv_sock + 1; j <= fd_max; j++)
 					{
 						if (j == clnt_sock)
-						{
 							write(clnt_sock, welcome, sizeof(welcome));
-							write(clnt_sock, "Server: The num of clients is ", 30);
-							write(clnt_sock, n, sizeof(n));
-							write(clnt_sock, "now\n", 8);			
-						}
 						else	
 							write(j, str, 80);		
 					}
-					write(clnt_sock, "Server: The num of clients is ", 30);
-					write(clnt_sock, n, sizeof(n));
-					write(clnt_sock, "now\n", 10);			
 				}
 				
 				else
@@ -99,7 +91,7 @@ int main(int argc, char *argv[])
 						FD_CLR(i, &reads);
 						close(i);
 						printf("closed client: %d\n", i);
-						for(j = serv_sock + 1; j <= fd_max; j++)
+						for(j =serv_sock + 1; j <= fd_max; j++)
 						{
 							if(i == j)
 								continue;
