@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 
 	struct sockaddr_in serv_adr, clnt_adr;
 	socklen_t clnt_adr_sz;
-	FILE* readfp, * writefp;
+	FILE* readfp, *writefp;
 
 	if (argc != 2)
 	{
